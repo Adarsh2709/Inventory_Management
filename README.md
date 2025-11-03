@@ -148,17 +148,3 @@ Deploy your inventory management system with one click:
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## ✉️ Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - your.email@example.com
-
-Project Link: [https://github.com/yourusername/inventory_optimizer](https://github.com/yourusername/inventory_optimizer)
-
-## 🙏 Acknowledgments
-
-- [Flask](https://flask.palletsprojects.com/) - The web framework used
-- [Tailwind CSS](https://tailwindcss.com/) - For styling
-- [Font Awesome](https://fontawesome.com/) - For beautiful icons
-- [Chart.js](https://www.chartjs.org/) - For interactive charts
-- [Shields.io](https://shields.io/) - For the beautiful badges
