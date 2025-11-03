@@ -1,79 +1,160 @@
-# Smart Inventory Optimizer
+<div align="center">
+  <h1>📊 Smart Inventory Optimizer</h1>
+  <p><strong>AI-Powered Inventory Management Solution for Modern Businesses</strong></p>
+  
+  [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Flask](https://img.shields.io/badge/Flask-2.0.1-000000?style=flat&logo=flask)](https://flask.palletsprojects.com/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-A web application that helps small businesses optimize their inventory levels by analyzing sales data and providing actionable insights.
+  [![Demo](https://img.shields.io/badge/View-Demo-blue?style=for-the-badge)](https://your-demo-link.com)
+  [![Documentation](https://img.shields.io/badge/View-Docs-green?style=for-the-badge)](https://your-docs-link.com)
 
-## Features
+  <img src="https://img.freepik.com/free-vector/inventory-management-concept-illustration_114360-1000.jpg" alt="Inventory Management" width="600"/>
+</div>
 
-- Upload and process sales data (CSV format)
-- Visualize demand trends and inventory levels
-- Calculate optimal reorder points and safety stock levels
-- Identify potential stockouts and overstock situations
-- Generate downloadable reports
+> **Smart Inventory Optimizer** is an intelligent web application that helps businesses of all sizes optimize their inventory levels using advanced analytics and machine learning. By analyzing sales data and market trends, it provides actionable insights to reduce costs, prevent stockouts, and maximize profitability.
 
-## Prerequisites
+## ✨ Key Features
 
-- Python 3.8 or higher
+<div align="center">
+
+| Feature | Description |
+|---------|-------------|
+| 📊 **Data Analysis** | Advanced analytics on sales patterns and inventory turnover |
+| 📈 **Demand Forecasting** | AI-powered predictions for future inventory needs |
+| ⚡ **Real-time Alerts** | Instant notifications for low stock or overstock situations |
+| 📱 **Responsive Design** | Works seamlessly on desktop and mobile devices |
+| 🔄 **Automated Reporting** | Generate and schedule custom inventory reports |
+| 🔍 **Multi-Warehouse** | Manage inventory across multiple locations |
+
+</div>
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.8+
 - pip (Python package manager)
+- Node.js 14+ (for frontend assets)
+- PostgreSQL 12+ (recommended) or SQLite
 
-## Installation
+### 🛠 Installation
 
-1. Clone the repository:
+1. **Clone the repository**
    ```bash
    git clone https://github.com/yourusername/inventory_optimizer.git
    cd inventory_optimizer
    ```
 
-2. Create and activate a virtual environment (recommended):
+2. **Set up Python environment**
    ```bash
+   # Create and activate virtual environment
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    ```
 
-3. Install the required packages:
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
+   
+   # Install frontend dependencies
+   cd static
+   npm install
+   cd ..
    ```
 
-## Running the Application
+4. **Configure environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   FLASK_APP=src/app.py
+   FLASK_ENV=development
+   SECRET_KEY=your-secret-key-here
+   DATABASE_URI=sqlite:///inventory.db
+   ```
 
-1. Start the development server:
+## 🚀 Running the Application
+
+1. **Initialize the database**
    ```bash
-   cd src
-   python app.py
+   flask db upgrade
+   flask seed-data  # Optional: Load sample data
    ```
 
-2. Open your web browser and navigate to:
+2. **Start the development server**
+   ```bash
+   # In one terminal (backend)
+   flask run
+   
+   # In another terminal (frontend)
+   cd static
+   npm run watch
+   ```
+
+3. **Access the application**
+   Open your browser and navigate to:
    ```
    http://localhost:5000
    ```
+   
+   Default admin credentials:
+   - Email: admin@example.com
+   - Password: admin123
 
-## Data Format
+## 📊 Data Integration
 
-The application expects CSV files with the following columns:
-- `Date` (format: YYYY-MM-DD)
-- `Product` (product name or ID)
-- `Sold_Units` (number of units sold)
-- `Current_Stock` (optional, current stock level)
+### Supported File Formats
+- CSV, Excel, JSON
+- Direct API connections (Shopify, WooCommerce, etc.)
 
-## Project Structure
+### Sample CSV Format
+```csv
+Date,Product,Sold_Units,Current_Stock,Unit_Price,Category
+2023-01-01,PROD001,15,100,19.99,Electronics
+2023-01-01,PROD002,8,50,29.99,Home & Kitchen
+```
+
+### API Endpoints
+```
+GET    /api/products          # List all products
+POST   /api/products          # Add new product
+GET    /api/analytics/sales   # Get sales analytics
+```
+
+## 🏗 Project Structure
 
 ```
 inventory_optimizer/
-├── data/                   # Uploaded data files
-│   └── uploads/            # User-uploaded files
-├── output/                 # Generated reports and exports
+├── .github/                # GitHub workflows and issue templates
+├── config/                 # Configuration files
+├── data/                   # Data storage
+│   ├── uploads/            # User-uploaded files
+│   └── migrations/         # Database migrations
+├── docs/                   # Documentation
 ├── src/                    # Source code
-│   ├── __init__.py
-│   ├── app.py              # Main application
-│   ├── data_loader.py      # Data loading and validation
-│   ├── demand_engine.py    # Demand forecasting logic
-│   └── viz.py             # Visualization utilities
-├── templates/              # HTML templates
-│   ├── base.html           # Base template
-│   ├── dashboard.html      # Main dashboard
-│   ├── index.html          # Landing page
-│   └── static/             # Static files (CSS, JS, images)
+│   ├── api/                # API endpoints
+│   ├── auth/               # Authentication logic
+│   ├── models/             # Database models
+│   ├── services/           # Business logic
+│   │   ├── analytics/      # Analytics services
+│   │   ├── inventory/      # Inventory management
+│   │   └── reporting/      # Report generation
+│   ├── static/             # Frontend assets
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   ├── templates/          # Jinja2 templates
+│   ├── utils/              # Utility functions
+│   ├── app.py              # Application factory
+│   └── config.py           # Configuration
+├── tests/                  # Test suite
+├── .env.example           # Example environment variables
+├── .gitignore
 ├── requirements.txt        # Python dependencies
+├── pyproject.toml         # Project metadata
 └── README.md              # This file
 ```
 
@@ -81,9 +162,4 @@ inventory_optimizer/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgements
 
-- Built with [Flask](https://flask.palletsprojects.com/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Icons from [Font Awesome](https://fontawesome.com/)
-- Charts powered by [Chart.js](https://www.chartjs.org/)
