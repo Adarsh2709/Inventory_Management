@@ -40,6 +40,7 @@
 - Python 3.8 or higher
 - pip (Python package manager)
 - Git (for version control)
+- [Vercel Account](https://vercel.com/signup) (for deployment)
 
 ### Installation
 
@@ -116,6 +117,33 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## ☁️ Deploy to Vercel
+
+Deploy your inventory management system with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAdarsh2709%2FInventory_Management&env=FLASK_APP&env=FLASK_ENV&project-name=inventory-management&repository-name=Inventory_Management)
+
+### Manual Deployment
+
+1. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. Login to Vercel:
+   ```bash
+   vercel login
+   ```
+
+3. Deploy your application:
+   ```bash
+   vercel
+   ```
+
+4. Set environment variables in Vercel dashboard:
+   - `FLASK_APP=src/app.py`
+   - `FLASK_ENV=production`
 
 ## 📄 License
 
