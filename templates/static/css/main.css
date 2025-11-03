@@ -1,0 +1,127 @@
+/* Custom styles for the Smart Inventory Optimizer */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Animation for loading */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Custom tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Custom form controls */
+.custom-file-upload {
+    border: 2px dashed #ccc;
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.custom-file-upload:hover {
+    border-color: #3b82f6;
+    background-color: #f8fafc;
+}
+
+/* Custom table styles */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table-container {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+    }
+    
+    .table-container table {
+        min-width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .table-container th,
+    .table-container td {
+        white-space: nowrap;
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        padding: 20px;
+        font-size: 12px;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+}

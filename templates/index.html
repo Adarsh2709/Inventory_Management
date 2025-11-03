@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Smart Inventory Optimizer</h1>
+        <p class="text-xl text-gray-600">Optimize your inventory levels and reduce costs with AI-powered insights</p>
+    </div>
+    
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl shadow-sm mb-8 border border-blue-100">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Analyze Your Sales Data</h2>
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Upload Your Data</h3>
+            <p class="text-gray-600 mb-6">Upload your sales data in CSV format to get started with inventory analysis. Our system will automatically detect and process your data.</p>
+            
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
+                <h4 class="font-medium text-blue-800 mb-2 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> File Requirements
+                </h4>
+                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>CSV format (comma-separated values)</li>
+                    <li>Minimum required columns: Date, Product, and Sales/Quantity</li>
+                    <li>Date format: YYYY-MM-DD (recommended)</li>
+                    <li>File size limit: 10MB</li>
+                </ul>
+            </div>
+        
+        <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div class="flex items-center justify-center w-full">
+                <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-white hover:bg-gray-50 border-gray-300">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <i class="fas fa-cloud-upload-alt text-3xl text-blue-500 mb-2"></i>
+                        <p class="text-sm text-gray-500">
+                            <span class="font-semibold">Click to upload</span> or drag and drop
+                        </p>
+                        <p class="text-xs text-gray-500">CSV (MAX. 10MB)</p>
+                    </div>
+                    <input id="file-upload" name="file" type="file" class="hidden" accept=".csv" />
+                </label>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 flex items-center mx-auto">
+                    <i class="fas fa-chart-line mr-2"></i> Analyze Data
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+            <div class="text-blue-500 mb-4">
+                <i class="fas fa-chart-bar text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Demand Forecasting</h3>
+            <p class="text-gray-600">Predict future demand using advanced algorithms and historical sales data.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+            <div class="text-green-500 mb-4">
+                <i class="fas fa-boxes text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Optimal Stock Levels</h3>
+            <p class="text-gray-600">Calculate the perfect stock levels to minimize costs and maximize sales.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+            <div class="text-purple-500 mb-4">
+                <i class="fas fa-chart-pie text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Visual Analytics</h3>
+            <p class="text-gray-600">Interactive charts and reports to understand your inventory performance.</p>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    // Update file input display
+    const fileInput = document.getElementById('file-upload');
+    const fileLabel = document.querySelector('label[for="file-upload"]');
+    
+    fileInput.addEventListener('change', (e) => {
+        const fileName = e.target.files[0]?.name || 'No file selected';
+        const textElement = fileLabel.querySelector('p:first-of-type');
+        if (textElement) {
+            textElement.textContent = fileName;
+        }
+    });
+    
+    // Handle drag and drop
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        fileLabel.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+        fileLabel.addEventListener(eventName, highlight, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => {
+        fileLabel.addEventListener(eventName, unhighlight, false);
+    });
+    
+    function highlight() {
+        fileLabel.classList.add('border-blue-400', 'bg-blue-50');
+    }
+    
+    function unhighlight() {
+        fileLabel.classList.remove('border-blue-400', 'bg-blue-50');
+    }
+    
+    fileLabel.addEventListener('drop', handleDrop, false);
+    
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+        
+        const event = new Event('change');
+        fileInput.dispatchEvent(event);
+    }
+</script>
+{% endblock %}
+{% endblock %}

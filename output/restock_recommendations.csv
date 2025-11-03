@@ -1,0 +1,15 @@
+product,current_stock,avg_demand,safety_stock,reorder_point,inventory_turnover,needs_reorder,potential_stockout,days_until_stockout
+Backpack,0,17.0,13.13,132.13,0,True,True,0.0
+Coat,0,9.66,21.38,88.98,0,True,True,0.0
+Headphones,0,13.85,20.23,117.15,0,True,True,0.0
+Hoodie,0,21.88,27.92,181.04,0,True,True,0.0
+Jeans,0,17.21,23.94,144.4,0,True,True,0.0
+Laptop,0,5.0,0.0,35.0,0,True,True,0.0
+Smartphone,0,8.7,10.03,70.89,0,True,True,0.0
+Smartwatch,0,8.44,10.03,69.14,0,True,True,0.0
+Sneakers,0,11.25,12.23,90.98,0,True,True,0.0
+Speaker,0,19.84,19.47,158.35,0,True,True,0.0
+T-Shirt,0,26.45,35.85,220.98,0,True,True,0.0
+Tablet,0,5.0,5.78,40.78,0,True,True,0.0
+Wallet,0,36.67,16.99,273.66,0,True,True,0.0
+Watch,0,9.91,15.76,85.13,0,True,True,0.0
