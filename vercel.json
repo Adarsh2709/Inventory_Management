@@ -5,18 +5,20 @@
       "src": "src/app.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "50mb",
+        "pythonVersion": "3.11"
       }
     },
     {
-      "src": "templates/static/*",
+      "src": "templates/static/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/src/app.py"
-    }
-  ]
+    { "src": "/static/(.*)", "dest": "/templates/static/$1" },
+    { "src": "/(.*)", "dest": "/src/app.py" }
+  ],
+  "buildCommand": "pip install -r requirements.txt",
+  "installCommand": "pip install --upgrade pip && pip install -r requirements.txt",
+  "framework": null
 }
